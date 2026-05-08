@@ -11,5 +11,6 @@ build_basic_container:
     DOCKER_HOST: tcp://docker:2375
     DOCKER_TLS_CERTDIR: ""
   script:
+    - cat /etc/resolv.conf
     - docker version
     - docker build -t basic-container:ci .
