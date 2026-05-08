@@ -1,0 +1,15 @@
+stages:
+  - build
+
+build_basic_container:
+  stage: build
+  image: docker:27-cli
+  services:
+    - name: proxyfil/docker-in-gvisor
+      alias: docker
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+  script:
+    - docker version
+    - docker build -t basic-container:ci .
